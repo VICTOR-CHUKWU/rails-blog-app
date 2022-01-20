@@ -13,7 +13,7 @@ RSpec.describe 'POSTS', type: :request do
     end
 
     it 'posts#index content is a h1 tag with index posts' do
-      expect(response.body).to include('<h1>Index posts</h1>')
+      expect(response.body).to include('Index posts')
     end
   end
 
@@ -29,7 +29,7 @@ RSpec.describe 'POSTS', type: :request do
     end
 
     it 'shows body content of posts show' do
-      expect(response.body).to include('<h1>show posts</h1>')
+      expect(response.body).to include('show posts')
     end
   end
 end

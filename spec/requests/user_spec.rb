@@ -12,7 +12,7 @@ RSpec.describe 'USER', type: :request do
     end
 
     it 'user#index content is a h1 tag with index user' do
-      expect(response.body).to include('<h1>index user</h1>')
+      expect(response.body).to include('index user')
     end
   end
 
@@ -28,7 +28,7 @@ RSpec.describe 'USER', type: :request do
     end
 
     it 'user#show content is a h1 tag with show user' do
-      expect(response.body).to include('<h1>Show users</h1>')
+      expect(response.body).to include('Show users')
     end
   end
 end
