@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :user, only: %i[index show] do
-    resources :posts, only: %i[index show]
+  # get 'user/index', to: 'user#index', as: ''
+  resources :user, only: [:index, :show] do
+    resources :posts, only: [:index, :show]
   end  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
