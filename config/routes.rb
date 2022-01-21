@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # get 'user/index', to: 'user#index', as: ''
+  # get 'user/index', to: 'user#index', as: 'root'
+  root 'user#index'
   resources :user, only: [:index, :show] do
     resources :posts, only: [:index, :show]
   end  
