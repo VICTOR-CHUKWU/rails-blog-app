@@ -1,1 +1,11 @@
-<h1>show posts</h1>
+<section>
+  <div class="post">
+    <h2><%= @post.title %></h2>
+    <p><%= @post.text %></p>
+    <div class='text-end'>
+       <b>comments: <%= @post.comment_count %>, Likes: <%= @post.likes_count%> </b>
+    </div>
+  </div>
+  <div class="comments">
+    <%= render @post.comments %>
+  </div>
