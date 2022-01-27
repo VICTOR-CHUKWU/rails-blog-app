@@ -1,5 +1,7 @@
 <% @users.each do | user|%>
- <div class="border border-dark bg-white">
+ <div class="mb-3">
+  <%= link_to user_path(user.id) do %>
   <%= render partial:'partials/user', locals: { user: user} %>
+  <% end %>
  </div>
 <% end %>

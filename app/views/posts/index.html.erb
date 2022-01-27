@@ -1,7 +1,7 @@
-<section>
-  <%= render partial:'partials/user', locals: {user: @user} %>
-  <div class="posts">
-    <%= render @post %>
-  </div>
-  <button>Pagination</button>
-</section>
+<% @posts.each do | post|%>
+ <div class="border border-dark bg-white">
+  <%= link_to user_post_path(post.id) do %>
+  <%= render partial:'partials/post', locals: { post: post} %>
+  <% end %>
+ </div>
+<% end %>
