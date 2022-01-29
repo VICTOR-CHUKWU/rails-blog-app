@@ -12,6 +12,8 @@ gem 'ffi'
 
 gem 'net-http'
 
+gem 'bullet', group: 'development'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
