@@ -1,7 +1,10 @@
-<% @posts.each do | post|%>
- <div class="border border-dark bg-white">
-  <%= link_to user_post_path(post.id) do %>
-  <%= render partial:'partials/post', locals: { post: post} %>
-  <% end %>
- </div>
+<section>
+<% if flash[:error] %>
+<div><%= flash[:error] %></div>
 <% end %>
+  <%= render partial: 'user/user', locals: {user: @user} %>
+  <div class="posts">
+    <%= render @posts %>
+  </div>
+  <button>Pagination</button>
+</section>

@@ -1,10 +1,14 @@
-<section class="row">
-  <div class="col-12">
-  <%= render partial:'partials/user', locals: {user: @user} %>
+<section class="container">
+ <% if flash[:success] %>
+    <div class="alert"><%= flash[:alert] %></div>
+<% end %>
+<%= link_to 'New Post', new_post_path, class: 'btn btn-primary mb-3' %>
+  <%= render partial: 'user', locals: {user: @user} %>
+  <div class="col-12  mt-3 py-3 shadow">
+    <h4 class="text-center">Bio</h4>
+    <p class="text-center"><%= @user.bio %></p>
   </div>
-  <div class="col-12 border border-dark my-2 mt-4">
-    <h4>Bio</h4>
-    <p><%= @user.bio %></p>
+  <div >
+    <%= render @user.posts %>
   </div>
-  
 </section>

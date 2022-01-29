@@ -4,6 +4,6 @@ class User < ApplicationRecord
   has_many :comments, through: :posts
 
   def select_first_user
-    posts.order(created_at: :desc).limit(3)
+    User.limit(3).order(created_at: :desc)
   end
 end
