@@ -1,5 +1,10 @@
 class UserController < ApplicationController
-  def index; end
+  def index
+    @users = User.first(5)
+  end
 
-  def show; end
+  def show
+    @user = User.includes(:posts).find(params[:id])
+    @posts = @user.select_first_user
+  end
 end
