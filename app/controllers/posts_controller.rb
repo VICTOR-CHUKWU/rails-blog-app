@@ -1,12 +1,31 @@
 class PostsController < ApplicationController
   def index
-    @user = User.find(params[:user_id])
-    @posts = @user.posts.includes(:comments)
+    @user = current_user
+    @posts = @user.posts
   end
 
   def show
-    @user = User.find(params[:user_id])
-    @post = @user.posts.find(params[:id])
-    @like = Like.where(user_id: current_user.id, post_id: params[:id]).exists?
+    @post = Post.find(params[:id])
+  end
+
+  def new
+    @post = Post.new
+    # render :new, locals: { post: post }
+  end
+
+  def create
+    @user = current_user
+    # @post = current_user.posts.create(title: params[:tile], text: params[:text])
+    @post = Post.new(params.require(:post).permit(:title, :text))
+    # post.users = user
+    # post.users_id = user.id
+    @user.posts.push(@post)
+    if @post.save
+      flash[:success] = 'Created New Post succesfully'
+      redirect_to action: 'show', controller: 'user', id: @user.id
+    else
+      flash.now[:fail] = 'Failed to Create New Post'
+      render :new, locals: { post: @post }
+    end
   end
 end
