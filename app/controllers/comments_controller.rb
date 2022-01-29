@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :current_user
+  # before_action :current_user
 
   def new
     @comment = Comment.new
@@ -7,40 +7,18 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @user = @post.user
-    @comment = @post.comments.new(user_id: @post.id, text: comment_params[:text])
-    if @comment.save
-      flash[:notice] = 'Comment added succesfully'
-    else
-      flash[:alert] = 'Add Comment failed'
+    @comment = @post.comments.new(text: comment_params[:text], user_id: current_user.id, post_id: @post.id)
+
+    respond_to do |format|
+      format.html do
+        redirect_to user_post_path(@post.user.id, @post.id) if @comment.save
+      end
     end
-    redirect_to user_post_path(@user.id, @post.id)
   end
 
-  # private
+  private
 
   def comment_params
     params.require(:comment).permit(:text)
-  end
-end
-
-def new
-  @comment = Comment.new
-  @id = params[:post_id]
-end
-
-def create
-  id = params.require(:comment).permit(:post_id)
-  post = Post.find(id[:post_id])
-  comment = Comment.new(params.require(:comment).permit(:text))
-  post.comments.push(comment)
-  @user = current_user
-  @user.comments.push(comment)
-  if comment.save
-    flash[:success] = 'Saved the comment succesfully'
-    redirect_to action: 'show', controller: 'users', id: @user.id
-  else
-    flash.now[:fail] = 'Failed to Create New Comment'
-    render :new, locals: { post: comment }
   end
 end

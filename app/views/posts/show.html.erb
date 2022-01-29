@@ -6,11 +6,11 @@
        <b>comments: <%= @post.comment_count %>, Likes: <%= @post.likes_count%> </b>
     </div>
   <div class="mt-3 border border-dark">
-    <%= render @post.comments %>
+    <%= render @post.id.comments %>
   </div>
   <div class="col-12 text-center mt-3">
   <h2>Add a comment:</h2>
-  <%= form_with model: [ @post, @post.comments.build ] do |form| %>
+  <%= form_with model: [ @post, @post.comments.build ], method: :post, local: true do |form| %>
     <p>
       <%= form.text_field :text %>
     </p>
