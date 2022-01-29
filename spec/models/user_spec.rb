@@ -24,16 +24,13 @@ RSpec.describe User, type: :model do
   it 'test that the user is created properly' do
     name = 'Alfred'
     photo = 'https://images.unsplash.com/photo-1642024728966-7492bae9bb60?w=300'
-    # email = 'alfred@test.com'
-    # password = 'alfred123'
     user = User.new(name: name, photo: photo, bio: 'Hi', post_count: 0)
     expect(user).to be_valid
   end
 
   it 'tests that the first_three method works correctly' do
     user = User.create!(
-      name: 'Sarah', # , email: 'sarah@test.com',
-      # password: 'sarah123',
+      name: 'Sarah',
       photo: '',
       bio: '', post_count: 0
     )

@@ -10,7 +10,6 @@ RSpec.describe Like, type: :model do
 
   it 'updates a posts likes correctly' do
     user = User.new(name: 'Carrie', post_count: 0)
-    # user.skip_confirmation!
     user2 = User.create!(name: 'Henry', post_count: 0)
     post = user2.posts.create!(title: 'Post1', text: 'This is a post', likes_count: 0, comment_count: 0)
     post.likes.create!(user: user)
