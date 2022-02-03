@@ -1,3 +1,5 @@
+<p> <%= flash[:success] %> </p>
+<p> <%= flash[:alert] %> </p>
 <% @users.each do | user|%>
  <div class="mb-3">
   <%= link_to user_path(user.id) do %>

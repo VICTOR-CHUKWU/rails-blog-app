@@ -1,7 +1,7 @@
 
  <div class="row">
       <div class="col-3">
-        <img class="profile-image" src="<%= user.photo %>" alt="profile picture">
+        <img class="profile-image" src="<%= user.photo || 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png' %>" alt="profile picture">
       </div>
       <div class="col-9 border border-dark shadow ">
       <h2><%= user.id %> <%= user.name %> </h2>
