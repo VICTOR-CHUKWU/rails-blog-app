@@ -14,8 +14,9 @@ class PostsController < ApplicationController
 
   def create
     @user = current_user
-    @post = Post.new(params.require(:post).permit(:title, :text))
-    @user.posts.push(@post)
+    @post = @user.posts.new(params.require(:post).permit(:title, :text))
+    # @post = Post.new(params.require(:post).permit(:title, :text))
+    # @user.posts.push(@post)
     if @post.save
       flash[:success] = 'Created New Post succesfully'
       redirect_to action: 'show', controller: 'user', id: @user.id

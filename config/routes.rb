@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :users
   # get 'user/index', to: 'user#index', as: 'root'
   get '/likes/create(.:format)', to: 'likes#create', as: 'create_like'
   post '/comments/create', to: 'comments#create', as: 'create_comment'
